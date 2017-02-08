@@ -39,7 +39,9 @@ in an initializer for example.
 In your application code ask Dipswitch if a feature is enabled:
 
 ```ruby
-  Dipswitch.on?(:new_ui, current_user)
+  if Dipswitch.on?(:new_ui, current_user)
+    # do stuff
+  end
 ```
 
 That's it.
