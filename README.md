@@ -1,8 +1,6 @@
 # Dipswitch
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dipswitch`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Super simple feature flag switcher.
 
 ## Installation
 
@@ -22,7 +20,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure Dipswitch before calling it. In a Rails app you might want to do this
+in an initializer for example.
+
+```ruby
+  Dipswitch.configure do |config|
+    config.feature(:new_ui) do |user|
+      user.admin?
+    end
+
+    config.feature(:beta) do |user|
+      ['bella'].include?(user.username)
+    end
+
+  end
+```
+
+In your application code ask Dipswitch if a feature is enabled:
+
+```ruby
+  Dipswitch.on?(:new_ui, current_user)
+```
+
+That's it.
 
 ## Development
 
@@ -32,5 +52,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/dipswitch.
+Bug reports and pull requests are welcome on GitHub at https://github.com/rainkinz/dipswitch.
 

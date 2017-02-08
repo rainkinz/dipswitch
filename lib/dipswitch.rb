@@ -11,4 +11,5 @@ module Dipswitch
   def configuration
     @configuration ||= Configuration.new
   end
+
 end
