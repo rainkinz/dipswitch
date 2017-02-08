@@ -10,9 +10,7 @@ module Dipswitch
     end
 
     def on?(name, *args)
-      binding.pry
-
-      @features[:name].call(args)
+      @features[name.to_sym].call(*args)
     end
   end
 end

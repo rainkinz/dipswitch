@@ -8,11 +8,12 @@ module Dipswitch
       f.add(:new_ui) do |user|
         ['bella'].include?(user.username)
       end
+      f
     }
 
     it "determines if a feature is enabled" do
       expect(
-        features.on?(:new_ui, double("User", username: 'brendan'))
+        features.on?(:new_ui, double("User", username: 'bella'))
       ).to be_truthy
     end
 

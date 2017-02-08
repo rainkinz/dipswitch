@@ -1,6 +1,6 @@
 require 'dipswitch/version'
-require 'dipswitch/config'
-require 'dipswitch/feature'
+require 'dipswitch/configuration'
+require 'dipswitch/features'
 
 module Dipswitch
 
