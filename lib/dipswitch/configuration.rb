@@ -14,6 +14,10 @@ module Dipswitch
     configuration.features.on?(name, *args)
   end
 
+  def self.with(name, *args, &block)
+    configuration.features.with(name, *args, &block)
+  end
+
   class Configuration
     attr_reader :features
 

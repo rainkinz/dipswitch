@@ -1,5 +1,6 @@
 module Dipswitch
   class Features
+
     def initialize
       @features = {}
     end
@@ -11,6 +12,10 @@ module Dipswitch
 
     def on?(name, *args)
       (@features[name.to_sym] || []).any? {|feature| feature.call(*args) }
+    end
+
+    def with(name, *args, &block)
+      block.call if on?(name, *args)
     end
 
     def list

@@ -16,6 +16,12 @@ module Dipswitch
       expect(Dipswitch.configuration.features.list.size).to eq(1)
     end
 
+    it "exports the configuration as a Hash" do
+      # expect(Dipswitch.configuration.features).to eq({
+      #   # :new_ui =>
+      # })
+    end
+
     # TODO: Think about this
     # it "cannot be modified once configured and frozen" do
     #   expect do
