@@ -1,3 +1,5 @@
+# TODO: Rethink all these static methods
+#
 module Dipswitch
 
   def self.configure(&block)
@@ -16,6 +18,10 @@ module Dipswitch
 
   def self.with(name, *args, &block)
     configuration.features.with(name, *args, &block)
+  end
+
+  def self.for(*args)
+    configuration.features.for(*args)
   end
 
   def self.clear!
