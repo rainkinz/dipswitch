@@ -7,32 +7,14 @@ module Dipswitch
     before(:all) do
       Dipswitch.configure do |config|
         config.feature :new_ui do |user|
-          ['tom', 'brendan'].include?(user.username)
+          'bella' == user.username
         end
       end
     end
 
     it "configures features" do
-      expect(Dipswitch.configuration.features.list.size).to eq(1)
+      expect(Dipswitch.configuration.features.to_a.size).to eq(1)
     end
-
-    it "exports the configuration as a Hash" do
-      # expect(Dipswitch.configuration.features).to eq({
-      #   # :new_ui =>
-      # })
-    end
-
-    # TODO: Think about this
-    # it "cannot be modified once configured and frozen" do
-    #   expect do
-    #     Dipswitch.configure do |config|
-    #       # should throw
-    #       config.feature :beta do |user|
-    #         true
-    #       end
-    #     end
-    #   end.to raise_error(RuntimeError, /can't modify frozen Hash/)
-    # end
 
   end
 

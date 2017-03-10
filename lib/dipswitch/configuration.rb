@@ -18,6 +18,10 @@ module Dipswitch
     configuration.features.with(name, *args, &block)
   end
 
+  def self.clear!
+    configuration.clear!
+  end
+
   class Configuration
     attr_reader :features
 
@@ -29,9 +33,10 @@ module Dipswitch
       @features.add(name, &block)
     end
 
-    def freeze
-      @features.freeze
+    def clear!
+      @features.clear!
     end
+
   end
 
 end
