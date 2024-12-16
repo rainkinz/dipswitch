@@ -2,12 +2,8 @@ require 'spec_helper'
 require 'support/fake_user'
 
 module Dipswitch
-
-
   RSpec.describe Feature do
-
     describe "#==" do
-
       it "calls 2 instances equal if they point to the same proc/lambda" do
         proc1 = Proc.new{|user| ['bella'].include?(user.username)}
 
@@ -47,11 +43,9 @@ module Dipswitch
       it "determines if a feature is disabled" do
         expect(feature.on?(FakeUser.new('john', false))).to be_falsy
       end
-
     end
 
     describe "determining if a feature is enabled when passed a proc like object" do
-
       let(:feature) {
         proc1 = Proc.new{|user| ['bella'].include?(user.username)}
         f = described_class.new(:new_ui, proc1)
@@ -64,9 +58,6 @@ module Dipswitch
       it "determines if a feature is disabled" do
         expect(feature.on?(FakeUser.new('john', false))).to be_falsy
       end
-
     end
-
-
   end
 end

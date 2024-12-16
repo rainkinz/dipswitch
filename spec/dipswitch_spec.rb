@@ -13,7 +13,6 @@ describe Dipswitch do
       config.feature(:beta) do |user|
         ['bella'].include?(user.username)
       end
-
     end
   end
 
@@ -42,4 +41,3 @@ describe Dipswitch do
     expect(executed).to be_falsy
   end
 end
-

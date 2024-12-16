@@ -2,9 +2,7 @@ require 'spec_helper'
 require 'support/fake_user'
 
 module Dipswitch
-
   describe Features do
-
     let(:features) {
       f = described_class.new
       f.add(:new_ui) do |user|
@@ -19,8 +17,17 @@ module Dipswitch
         user.username == 'beta'
       end
 
+      f.add(:enable_for_development) do |env|
+        env == 'development'
+      end
+
       f
     }
+
+    it "determines if a feature is enabled" do
+      expect(features.on?(:enable_for_development, 'test')).to be_falsy
+      expect(features.on?(:enable_for_development, 'development')).to be_truthy
+    end
 
     it "determines if a feature is enabled" do
       expect(features.on?(:new_ui, FakeUser.new('bella'))).to be_truthy
@@ -49,5 +56,4 @@ module Dipswitch
       })
     end
   end
-
 end

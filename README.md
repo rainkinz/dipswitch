@@ -33,6 +33,11 @@ in an initializer for example.
       ['bella'].include?(user.username)
     end
 
+    ## Or maybe for environment specific features
+
+    config.feature(:enable_for_development) do |env|
+      env == 'development'
+    end
   end
 ```
 
@@ -55,4 +60,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/rainkinz/dipswitch.
-
