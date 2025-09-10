@@ -21,12 +21,21 @@ module Dipswitch
         env == 'development'
       end
 
+      f.add(:enable_for_multiple_args) do |env, host|
+        env == 'development' && host =~ /beta/
+      end
+
       f
     }
 
     it "determines if a feature is enabled" do
       expect(features.on?(:enable_for_development, 'test')).to be_falsy
       expect(features.on?(:enable_for_development, 'development')).to be_truthy
+    end
+
+    it "determines if a feature is enabled with multiple args" do
+      expect(features.on?(:enable_for_multiple_args, 'test')).to be_falsy
+      expect(features.on?(:enable_for_multiple_args, 'development', 'beta')).to be_truthy
     end
 
     it "determines if a feature is enabled" do
