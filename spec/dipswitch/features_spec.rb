@@ -36,6 +36,7 @@ module Dipswitch
     it "determines if a feature is enabled with multiple args" do
       expect(features.on?(:enable_for_multiple_args, 'test')).to be_falsy
       expect(features.on?(:enable_for_multiple_args, 'development', 'beta')).to be_truthy
+      expect(features.on?(:enable_for_multiple_args, 'development')).to be_falsy
     end
 
     it "determines if a feature is enabled" do
